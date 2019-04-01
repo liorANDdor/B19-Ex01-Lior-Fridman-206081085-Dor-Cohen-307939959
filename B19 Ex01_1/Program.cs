@@ -14,37 +14,59 @@ namespace B19_Ex01_1
 		}
 		public static void RunApplication()
 		{
-			int numInBinaryInput = GetInputFromUserInBinary();
-			int userInputInDecimal = BinaryToDecimalConvertor(numInBinaryInput);
-			bool ch = CheckIfTheNumberSeriesIsAscending(162345);
-			int[] arr = { 3, 2, 3, 5 };
-			float av = CalculateAverage(arr, 4);
-			Console.WriteLine(av);
-			Console.WriteLine(ch);
+			string s_numInBinaryInput = GetInputFromUserInBinary();
+			int num = BinaryToDecimalConvertor(s_numInBinaryInput);
+			Console.WriteLine(num);
 
 		}
-		public static int GetInputFromUserInBinary()
+		public static string GetInputFromUserInBinary()
 		{
-			int numInBinary;
-			string userInput = Console.ReadLine();
-			numInBinary = int.Parse(userInput);
-			return numInBinary;
+			string userInput;
+			bool checkIfInputIsValid = false;
+			Console.WriteLine("please enter a binary number with 9 digits: ");
+			userInput = Console.ReadLine();
+			checkIfInputIsValid = CheckIfInputIsValid(userInput);
+			while (!checkIfInputIsValid)
+			{
+				Console.WriteLine("Your input is invalid, please try again: ");
+				userInput = Console.ReadLine();
+				checkIfInputIsValid = CheckIfInputIsValid(userInput);
+			}
+			return userInput;
 		}
-		public static int BinaryToDecimalConvertor(int i_numInBinaryInput)
+		public static bool CheckIfInputIsValid(string i_stringInBinaryInput)
 		{
+			int subOfIntTochar = 48;
+			bool v_inputIsValid = true;
+			if (i_stringInBinaryInput.Length != 8)
+				v_inputIsValid = false;
+			for (int i = 0; i < 8 && v_inputIsValid; i++)
+			{
+				if (i_stringInBinaryInput[i] - subOfIntTochar != 1 && i_stringInBinaryInput[i] - subOfIntTochar != 0)
+					v_inputIsValid = false;
+			}
+			return v_inputIsValid;
+
+		}
+		public static int BinaryToDecimalConvertor(string i_numInBinaryInput)
+		{
+			int subOfIntTochar = 48;
 			int numInDecimal = 0;
 			int lastDigit;
 			int powOf2ToMul;
-			for(int i = 0; i < 8; i++)
+			for(int i = 7; i >= 0; i--)
 			{
-				lastDigit = i_numInBinaryInput % 10;
+				lastDigit = i_numInBinaryInput[i] - subOfIntTochar;
 				powOf2ToMul = (int) Math.Pow(2, i);
 				numInDecimal = numInDecimal + (powOf2ToMul * lastDigit);
-				i_numInBinaryInput = i_numInBinaryInput / 10;
 			}
 			return numInDecimal;
 		}
-		public static bool CheckIfTheNumberSeriesIsAscending (int i_numberToCheck)
+		public static bool CheckIfNumberIsTwoPower(int i_numberToCheck)
+		{
+			Math.L
+		}
+		public static bool CheckIfTheNumberIsSeriesAscending (int i_numberToCheck)
 		{
 			bool v_checkNumIsAscending = true;
 			int lastDigit, oneDigitBeforeLast;
