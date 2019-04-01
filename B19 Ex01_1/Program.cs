@@ -14,10 +14,49 @@ namespace B19_Ex01_1
 		}
 		public static void RunApplication()
 		{
-			string s_numInBinaryInput = GetInputFromUserInBinary();
-			int num = BinaryToDecimalConvertor(s_numInBinaryInput);
-			Console.WriteLine(num);
+			string [] binaryInputNumbers = GetArrayBinaryNumbers(4);
+			int[] theNumbersInDecimal = ConverArrayOfBinaryNumberToDecimal(binaryInputNumbers,4);
+			int x = CountTheZerosInArrayOfBinary(binaryInputNumbers, 4);
+			Console.WriteLine(x);
 
+			for (int i = 0; i < 4; i++)
+			{
+				Console.WriteLine(binaryInputNumbers[i]);
+				Console.WriteLine(theNumbersInDecimal[i]);
+			}
+		}
+		public static int CountTheZerosInArrayOfBinary(string[] i_binaryInput,int numOfElements)
+		{
+			int subOfIntTochar = 48;
+			int numOfZeros = 0;
+			for(int i = 0; i < numOfElements; i++)
+			{
+				for(int j = 0; j < 8; j++)
+				{
+					if (i_binaryInput[i][j] - subOfIntTochar == 0)
+						numOfZeros++;
+
+				}
+			}
+			return numOfZeros;
+		}
+		public static string[] GetArrayBinaryNumbers(int i_numOfElemnts)
+		{
+			string[] binaryInputNumbers = new string[i_numOfElemnts];
+			for (int i = 0; i < i_numOfElemnts; i++)
+			{
+				binaryInputNumbers[i]= GetInputFromUserInBinary();
+			}
+			return binaryInputNumbers;
+		}
+		public static int[] ConverArrayOfBinaryNumberToDecimal(string [] i_binaryInput,int i_numOfElements)
+		{
+			int[] theNumbersInDecimal = new int[i_numOfElements];
+			for (int i = 0; i < i_numOfElements; i++)
+			{
+				theNumbersInDecimal[i] = BinaryToDecimalConvertor(i_binaryInput[i]);
+			}
+			return theNumbersInDecimal;
 		}
 		public static string GetInputFromUserInBinary()
 		{
@@ -54,17 +93,25 @@ namespace B19_Ex01_1
 			int numInDecimal = 0;
 			int lastDigit;
 			int powOf2ToMul;
-			for(int i = 7; i >= 0; i--)
+			for(int i =7; i >=0 ; i--)
 			{
 				lastDigit = i_numInBinaryInput[i] - subOfIntTochar;
-				powOf2ToMul = (int) Math.Pow(2, i);
+				powOf2ToMul = (int) Math.Pow(2, 7-i);
 				numInDecimal = numInDecimal + (powOf2ToMul * lastDigit);
 			}
 			return numInDecimal;
 		}
-		public static bool CheckIfNumberIsTwoPower(int i_numberToCheck)
+		public static bool CheckIfNumberIsTwoPower(int i_numberToCheck2Pow)
 		{
-			Math.L
+			if (i_numberToCheck2Pow == 0)
+				return false;
+			while (i_numberToCheck2Pow != 1)
+			{
+				if (i_numberToCheck2Pow % 2 != 0)
+					return false;
+				i_numberToCheck2Pow /= 2;
+			}
+			return true;
 		}
 		public static bool CheckIfTheNumberIsSeriesAscending (int i_numberToCheck)
 		{
