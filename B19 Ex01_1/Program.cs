@@ -16,14 +16,42 @@ namespace B19_Ex01_1
 		{
 			string[] binaryInputNumbers = GetArrayBinaryNumbers(4);
 			int[] theNumbersInDecimal = ConverArrayOfBinaryNumberToDecimal(binaryInputNumbers, 4);
-			int x = CountTheZerosInArrayOfBinary(binaryInputNumbers, 4);
-			Console.WriteLine(x);
-
-			for (int i = 0; i < 4; i++)
+			int numOfZeros = CountTheZerosInArrayOfBinary(binaryInputNumbers, 4);
+			int numOfOnes = 32 - numOfZeros;
+			int numOfNumberThatAreExpOfTwo = CountNumOfNumberThatAreExpOfTwo(theNumbersInDecimal, 4);
+			float averageOfInputs = CalculateAverage(theNumbersInDecimal, 4);
+			int numOfNumberThatAreAscendingSeries = CountTheNumberIsSeriesAscending(theNumbersInDecimal, 4);
+			Console.WriteLine("num of zeros= {0}" ,numOfZeros/4);
+			Console.WriteLine("num of ones= {0}" ,numOfOnes/4);
+			Console.WriteLine("num of exp Two= {0}" , numOfNumberThatAreExpOfTwo);
+			Console.WriteLine("the average is= {0}" , averageOfInputs);
+			Console.WriteLine("num od ascending = {0}" , numOfNumberThatAreAscendingSeries);
+		}
+		public static int CountTheNumberIsSeriesAscending(int[] i_arrInput, int i_numOfElements)
+		{
+			bool v_checkNumberIsAscending;
+			int numOfNumberThatAreAscending = 0;
+			for (int i = 0; i < i_numOfElements; i++)
 			{
-				Console.WriteLine(binaryInputNumbers[i]);
-				Console.WriteLine(theNumbersInDecimal[i]);
+				v_checkNumberIsAscending = false;
+				v_checkNumberIsAscending = CheckIfTheNumberIsSeriesAscending(i_arrInput[i]);
+				if (v_checkNumberIsAscending)
+					numOfNumberThatAreAscending++;
 			}
+			return numOfNumberThatAreAscending;
+		}
+		public static int CountNumOfNumberThatAreExpOfTwo(int[] i_arrInput, int i_numOfElements)
+		{
+			bool v_checkNumberIsTwoExp;
+			int numOfNumberThatAreExpOfTwo=0;
+			for(int i = 0; i < i_numOfElements; i++)
+			{
+				v_checkNumberIsTwoExp = false;
+				v_checkNumberIsTwoExp = CheckIfNumberIsTwoPower(i_arrInput[i]);
+				if (v_checkNumberIsTwoExp)
+					numOfNumberThatAreExpOfTwo++;
+			}
+			return numOfNumberThatAreExpOfTwo;
 		}
 		public static int CountTheZerosInArrayOfBinary(string[] i_binaryInput, int i_numOfElements)
 		{
