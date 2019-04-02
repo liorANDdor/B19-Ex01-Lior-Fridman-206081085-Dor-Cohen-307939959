@@ -1,101 +1,119 @@
-﻿using System;
-using System.Collections.Generic;
+﻿
+using System;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace B19_Ex01_4
+namespace B19_Ex01_05
 {
-	class Program
-	{
-		public static void Main()
-		{
-			bool v_isProductOfThree = false;
-			bool v_isSmallLetter = false;
-			int stringAsInt = 0;
-			System.Console.WriteLine("Hi. Please enter the required string, please remember only English letters and numbers are allowed");
-			string stringFromUser = System.Console.ReadLine();
-			int stringLength = stringFromUser.Length;
-			bool v_isPolindor = CheckIfPolindrom(stringFromUser, stringLength);
-			bool v_checkIfNumber = int.TryParse(stringFromUser, out stringAsInt);
-			bool v_checkIfWord = !stringFromUser.Any(char.IsDigit);
-			if (v_isPolindor)
-			{
-				System.Console.WriteLine("The string is a polindrom");
-			}
-			else
-			{
-				System.Console.WriteLine("The string is NOT a polindrom");
-			}
+    class Program
+    {
+        public static void Main()
+        {
+            RunProgramEx4();
+        }
 
-			if (v_checkIfNumber)
-			{
-				if (v_isProductOfThree = CheckIfProductOfThree(stringAsInt))
-				{
-					System.Console.WriteLine("the string is a number, and is a product of three");
-				}
-			}
-			else
-			{
-				if (v_checkIfWord)
-				{
-					if (v_isSmallLetter = CheckIfSmallLetters(stringFromUser, stringLength))
-					{
-						System.Console.WriteLine("the string is a word, and it contains only small letters");
-					}
-					System.Console.WriteLine("the string is a word, but it contains both Capital and small letters");
-				}
-				else
-				{
-					System.Console.WriteLine("the string is contains both lettrs and numbers");
-				}
-			}
-			stringFromUser = System.Console.ReadLine();
-		}
+        public static void RunProgramEx4()
+        {
 
-		public static bool CheckIfPolindrom(string i_stringToCheck, int i_stringLength)
-		{
-			if (i_stringLength == 0 || i_stringLength == 1)
-			{
-				return true;
-			}
+            long stringAsNum;
+            System.Console.WriteLine("Hi. Please enter the required string, please remember only English letters and numbers are allowed");
+            string stringFromUser = System.Console.ReadLine();
+            bool isNumber = long.TryParse(stringFromUser, out stringAsNum);
+            bool isfWord = !stringFromUser.Any(char.IsDigit);
+            int stringLength = stringFromUser.Length;
+            while ((!isNumber && !isfWord) || stringLength != 12)
+            {
+                System.Console.WriteLine("The string must be 12 letters long and should contain lettrs only, or digit only.");
+                stringFromUser = System.Console.ReadLine();
+                isNumber = long.TryParse(stringFromUser, out stringAsNum);
+                isfWord = !stringFromUser.Any(char.IsDigit);
+                stringLength = stringFromUser.Length;
+            }
 
-			if (i_stringToCheck[0] == i_stringToCheck[i_stringLength - 1])
-			{
-				return CheckIfPolindrom(i_stringToCheck.Substring(1, i_stringLength - 2), i_stringLength - 2);
-			}
-			else
-				return false;
-		}
+            AuxCheckIfPolindrom(stringFromUser);
+            bool isSmallLetter = CheckIfSmallLetters(stringFromUser, stringLength);
+            if (isNumber)
+            {
+                CheckIfProductOfThree(stringAsNum);
+            }
+            else
+            {
+                AuxCheckIfSmallLetters(stringFromUser);
+            }
+
+            stringFromUser = System.Console.ReadLine();
+        }
+
+        public static void AuxCheckIfPolindrom(string i_stringToCheck)
+        {
+            bool isPolindrom = CheckIfPolindrom(i_stringToCheck, 12);
+            if (isPolindrom)
+            {
+                System.Console.WriteLine("The string is a polindrom");
+            }
+            else
+            {
+                System.Console.WriteLine("The string is NOT a polindrom");
+            }
+
+        }
+
+        public static bool CheckIfPolindrom(string i_stringToCheck, int i_stringLength)
+        {
+            if (i_stringLength == 0 || i_stringLength == 1)
+            {
+                return true;
+            }
+
+            if (i_stringToCheck[0] == i_stringToCheck[i_stringLength - 1])
+            {
+                return CheckIfPolindrom(i_stringToCheck.Substring(1, i_stringLength - 2), i_stringLength - 2);
+            }
+            else
+                return false;
+        }
+
+        public static void CheckIfProductOfThree(long stringAsInt)
+        {
+            if (stringAsInt % 3 == 0)
+            {
+                System.Console.WriteLine("the string is a number, and is a product of three");
+            }
+            else
+            {
+                System.Console.WriteLine("the string is a number, but is NOT a product of three");
+            }
+        }
+
+        public static void AuxCheckIfSmallLetters(string stringFromUser)
+        {
+            bool isSmallLetters = CheckIfSmallLetters(stringFromUser, 12);
+            if (isSmallLetters)
+            {
+                System.Console.WriteLine("the string is a word, and it contains only small letters");
+            }
+            else
+            {
+                System.Console.WriteLine("the string is a word, and it contains capital letters");
+            }
+        }
+
+        public static bool CheckIfSmallLetters(string stringFromUser, int i_stringLength)
+        {
+            if (i_stringLength == 1)
+            {
+                return true;
+            }
+            else if (stringFromUser[0] >= 'a' && stringFromUser[0] <= 'z')
+            {
+                return CheckIfSmallLetters(stringFromUser.Substring(1, i_stringLength - 1), i_stringLength - 1);
+            }
+            else
+            {
+                return false;
+            }
+        }
 
 
-		public static bool CheckIfProductOfThree(int stringAsInt)
-		{
-			if (stringAsInt % 3 == 0)
-				return true;
-			else
-				return false;
-		}
+    }
 
-
-		public static bool CheckIfSmallLetters(string stringFromUser, int i_stringLength)
-		{
-			if (i_stringLength == 1)
-			{
-				return true;
-			}
-
-			else if ('a' <= stringFromUser[0] && stringFromUser[0] <= 'z')
-			{
-				return CheckIfSmallLetters(stringFromUser.Substring(1, i_stringLength - 1), i_stringLength - 1);
-
-			}
-
-			else
-			{
-				return false;
-			}
-		}
-
-	}
 }
