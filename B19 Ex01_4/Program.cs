@@ -1,9 +1,8 @@
-﻿
-using System;
-using System.Linq;
-
-namespace B19_Ex01_05
+﻿namespace B19_Ex01_05
 {
+    using System;
+    using System.Linq;
+
     class Program
     {
         public static void Main()
@@ -13,7 +12,6 @@ namespace B19_Ex01_05
 
         public static void RunProgramEx4()
         {
-
             long stringAsNum;
             System.Console.WriteLine("Hi. Please enter the required string, please remember only English letters and numbers are allowed");
             string stringFromUser = System.Console.ReadLine();
@@ -54,7 +52,6 @@ namespace B19_Ex01_05
             {
                 System.Console.WriteLine("The string is NOT a polindrom");
             }
-
         }
 
         public static bool CheckIfPolindrom(string i_stringToCheck, int i_stringLength)
@@ -69,7 +66,9 @@ namespace B19_Ex01_05
                 return CheckIfPolindrom(i_stringToCheck.Substring(1, i_stringLength - 2), i_stringLength - 2);
             }
             else
+            {
                 return false;
+            }
         }
 
         public static void CheckIfProductOfThree(long stringAsInt)
@@ -112,8 +111,5 @@ namespace B19_Ex01_05
                 return false;
             }
         }
-
-
     }
-
 }
