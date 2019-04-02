@@ -14,18 +14,21 @@ namespace B19_Ex01_1
 		}
 		public static void RunApplication()
 		{
-			string[] binaryInputNumbers = GetArrayBinaryNumbers(4);
-			int[] theNumbersInDecimal = ConverArrayOfBinaryNumberToDecimal(binaryInputNumbers, 4);
-			int numOfZeros = CountTheZerosInArrayOfBinary(binaryInputNumbers, 4);
-			int numOfOnes = 32 - numOfZeros;
-			int numOfNumberThatAreExpOfTwo = CountNumOfNumberThatAreExpOfTwo(theNumbersInDecimal, 4);
-			float averageOfInputs = CalculateAverage(theNumbersInDecimal, 4);
-			int numOfNumberThatAreAscendingSeries = CountTheNumberIsSeriesAscending(theNumbersInDecimal, 4);
-			Console.WriteLine("num of zeros= {0}" ,numOfZeros/4);
-			Console.WriteLine("num of ones= {0}" ,numOfOnes/4);
-			Console.WriteLine("num of exp Two= {0}" , numOfNumberThatAreExpOfTwo);
-			Console.WriteLine("the average is= {0}" , averageOfInputs);
-			Console.WriteLine("num od ascending = {0}" , numOfNumberThatAreAscendingSeries);
+			int numOfInputs = 4;
+			int numOfBitInBinaryNum = 8;
+			Console.WriteLine("Please enter {0} number in binary mode: ",numOfInputs);
+			string[] binaryInputNumbers = GetArrayBinaryNumbers(numOfInputs);
+			int[] theNumbersInDecimal = ConverArrayOfBinaryNumberToDecimal(binaryInputNumbers, numOfInputs);
+			int numOfZeros = CountTheZerosInArrayOfBinary(binaryInputNumbers, numOfInputs);
+			int numOfOnes = numOfInputs*numOfBitInBinaryNum - numOfZeros;
+			int numOfNumberThatAreExpOfTwo = CountNumOfNumberThatAreExpOfTwo(theNumbersInDecimal, numOfInputs);
+			float averageOfInputs = CalculateAverage(theNumbersInDecimal, numOfInputs);
+			int numOfNumberThatAreAscendingSeries = CountTheNumberIsSeriesAscending(theNumbersInDecimal, numOfInputs);
+			Console.WriteLine("The average of zeros in the numbers is: {0}", numOfZeros/ numOfInputs);
+			Console.WriteLine("The average of ones in the numbers is: {0}" ,numOfOnes/ numOfInputs);
+			Console.WriteLine("Number of numbers that are exp of Two: {0}" , numOfNumberThatAreExpOfTwo);
+			Console.WriteLine("The average of the numbers is: {0}" , averageOfInputs);
+			Console.WriteLine("Number of ascending numbers: {0}" , numOfNumberThatAreAscendingSeries);
 		}
 		public static int CountTheNumberIsSeriesAscending(int[] i_arrInput, int i_numOfElements)
 		{
@@ -90,7 +93,7 @@ namespace B19_Ex01_1
 		{
 			string userInput;
 			bool checkIfInputIsValid = false;
-			Console.WriteLine("please enter a binary number with 9 digits: ");
+			Console.WriteLine("please enter a binary number with 8 digits: ");
 			userInput = Console.ReadLine();
 			checkIfInputIsValid = CheckIfInputIsValid(userInput);
 			while (!checkIfInputIsValid)
