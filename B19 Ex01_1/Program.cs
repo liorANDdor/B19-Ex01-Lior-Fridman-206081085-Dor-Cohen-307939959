@@ -14,8 +14,8 @@ namespace B19_Ex01_1
 		}
 		public static void RunApplication()
 		{
-			string [] binaryInputNumbers = GetArrayBinaryNumbers(4);
-			int[] theNumbersInDecimal = ConverArrayOfBinaryNumberToDecimal(binaryInputNumbers,4);
+			string[] binaryInputNumbers = GetArrayBinaryNumbers(4);
+			int[] theNumbersInDecimal = ConverArrayOfBinaryNumberToDecimal(binaryInputNumbers, 4);
 			int x = CountTheZerosInArrayOfBinary(binaryInputNumbers, 4);
 			Console.WriteLine(x);
 
@@ -25,13 +25,13 @@ namespace B19_Ex01_1
 				Console.WriteLine(theNumbersInDecimal[i]);
 			}
 		}
-		public static int CountTheZerosInArrayOfBinary(string[] i_binaryInput,int numOfElements)
+		public static int CountTheZerosInArrayOfBinary(string[] i_binaryInput, int i_numOfElements)
 		{
 			int subOfIntTochar = 48;
 			int numOfZeros = 0;
-			for(int i = 0; i < numOfElements; i++)
+			for (int i = 0; i < i_numOfElements; i++)
 			{
-				for(int j = 0; j < 8; j++)
+				for (int j = 0; j < 8; j++)
 				{
 					if (i_binaryInput[i][j] - subOfIntTochar == 0)
 						numOfZeros++;
@@ -45,11 +45,11 @@ namespace B19_Ex01_1
 			string[] binaryInputNumbers = new string[i_numOfElemnts];
 			for (int i = 0; i < i_numOfElemnts; i++)
 			{
-				binaryInputNumbers[i]= GetInputFromUserInBinary();
+				binaryInputNumbers[i] = GetInputFromUserInBinary();
 			}
 			return binaryInputNumbers;
 		}
-		public static int[] ConverArrayOfBinaryNumberToDecimal(string [] i_binaryInput,int i_numOfElements)
+		public static int[] ConverArrayOfBinaryNumberToDecimal(string[] i_binaryInput, int i_numOfElements)
 		{
 			int[] theNumbersInDecimal = new int[i_numOfElements];
 			for (int i = 0; i < i_numOfElements; i++)
@@ -93,10 +93,10 @@ namespace B19_Ex01_1
 			int numInDecimal = 0;
 			int lastDigit;
 			int powOf2ToMul;
-			for(int i =7; i >=0 ; i--)
+			for (int i = 7; i >= 0; i--)
 			{
 				lastDigit = i_numInBinaryInput[i] - subOfIntTochar;
-				powOf2ToMul = (int) Math.Pow(2, 7-i);
+				powOf2ToMul = (int)Math.Pow(2, 7 - i);
 				numInDecimal = numInDecimal + (powOf2ToMul * lastDigit);
 			}
 			return numInDecimal;
@@ -113,7 +113,7 @@ namespace B19_Ex01_1
 			}
 			return true;
 		}
-		public static bool CheckIfTheNumberIsSeriesAscending (int i_numberToCheck)
+		public static bool CheckIfTheNumberIsSeriesAscending(int i_numberToCheck)
 		{
 			bool v_checkNumIsAscending = true;
 			int lastDigit, oneDigitBeforeLast;
@@ -121,7 +121,7 @@ namespace B19_Ex01_1
 			{
 				lastDigit = i_numberToCheck % 10;
 				oneDigitBeforeLast = (i_numberToCheck / 10) % 10;
-				if(oneDigitBeforeLast >= lastDigit)
+				if (oneDigitBeforeLast >= lastDigit)
 				{
 					v_checkNumIsAscending = false;
 				}
@@ -129,11 +129,11 @@ namespace B19_Ex01_1
 			}
 			return v_checkNumIsAscending;
 		}
-		public static float CalculateAverage(int [] i_arrInput,int i_numOfElements)
+		public static float CalculateAverage(int[] i_arrInput, int i_numOfElements)
 		{
 			float averageOfArrElements = 0;
 			int sumOfArrElements = 0;
-			for(int i=0;i<i_numOfElements;i++)
+			for (int i = 0; i < i_numOfElements; i++)
 			{
 				sumOfArrElements += i_arrInput[i];
 			}
