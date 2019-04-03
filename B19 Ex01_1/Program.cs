@@ -72,7 +72,6 @@ namespace B19_Ex01_1
 					{
 						numOfZeros++;
 					}
-
 				}
 			}
 			return numOfZeros;
