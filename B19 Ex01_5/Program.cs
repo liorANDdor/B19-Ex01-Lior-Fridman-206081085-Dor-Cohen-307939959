@@ -14,12 +14,28 @@ namespace B19_Ex01_5
 		}
 		public static void  RunApplication()
 		{
-			string inputFromUser = GetInputFromUser();
-			char maxDigit = inputFromUser.Max();
-			char minDigit = inputFromUser.Min();
-			int numOfDigAreDivideInThree = CheckNumOfDigAreDivideInThree(inputFromUser);
+			string stringOfEightDigs = GetInputFromUser();
+			char maxDigit = stringOfEightDigs.Max();
+			char minDigit = stringOfEightDigs.Min();
+			int numOfDigsThatDivededInThree = CheckNumOfDigAreDivideInThree(stringOfEightDigs);
 			Console.WriteLine("The min digit is: {0}", minDigit);
 			Console.WriteLine("The max digit is: {0}", maxDigit);
+			Console.WriteLine("The number of digits that divided in 3 is: {0}", numOfDigsThatDivededInThree);
+
+		}
+		public static int CheckNumOfDigAreDivideInThree(string i_stringOfEightDig)
+		{
+			int counter = 0;
+			int currentDigit;
+			for (int i = 0; i < 8; i++)
+			{
+				currentDigit = i_stringOfEightDig[i] - 48;
+				if (currentDigit % 3 == 0)
+				{
+					counter++;
+				}
+			}
+			return counter;
 		}
 		public static string GetInputFromUser()
 		{
@@ -34,16 +50,16 @@ namespace B19_Ex01_5
 			}
 			return numberFromUser;
 		}
-		public static bool CheckIfInputIsValid(string i_numberFromUser)
+		public static bool CheckIfInputIsValid(string i_stringOfEightDig)
 		{
 			bool v_inputIsValid = true;
-			if (i_numberFromUser.Length != 8)
+			if (i_stringOfEightDig.Length != 8)
 			{
 				v_inputIsValid = false;
 			}
 			for (int i = 0; i < 8 && v_inputIsValid; i++)
 			{
-				if (i_numberFromUser[i] > '9' || i_numberFromUser[i] < '0')
+				if (i_stringOfEightDig[i] > '9' || i_stringOfEightDig[i] < '0')
 				{
 					v_inputIsValid = false;
 				}
