@@ -14,7 +14,7 @@ namespace B19_Ex01_1
 		}
 		public static void RunApplication()
 		{
-			int numOfInputs = 4;
+			int numOfInputs = 1;
 			int numOfBitInBinaryNum = 8;
 			Console.WriteLine("Please enter {0} number in binary mode: ",numOfInputs);
 			string[] binaryInputNumbers = GetArrayBinaryNumbers(numOfInputs);
@@ -39,7 +39,9 @@ namespace B19_Ex01_1
 				v_checkNumberIsAscending = false;
 				v_checkNumberIsAscending = CheckIfTheNumberIsSeriesAscending(i_arrInput[i]);
 				if (v_checkNumberIsAscending)
+				{
 					numOfNumberThatAreAscending++;
+				}
 			}
 			return numOfNumberThatAreAscending;
 		}
@@ -52,7 +54,9 @@ namespace B19_Ex01_1
 				v_checkNumberIsTwoExp = false;
 				v_checkNumberIsTwoExp = CheckIfNumberIsTwoPower(i_arrInput[i]);
 				if (v_checkNumberIsTwoExp)
+				{
 					numOfNumberThatAreExpOfTwo++;
+				}
 			}
 			return numOfNumberThatAreExpOfTwo;
 		}
@@ -65,7 +69,9 @@ namespace B19_Ex01_1
 				for (int j = 0; j < 8; j++)
 				{
 					if (i_binaryInput[i][j] - subOfIntTochar == 0)
+					{
 						numOfZeros++;
+					}
 
 				}
 			}
@@ -109,11 +115,15 @@ namespace B19_Ex01_1
 			int subOfIntTochar = 48;
 			bool v_inputIsValid = true;
 			if (i_stringInBinaryInput.Length != 8)
+			{
 				v_inputIsValid = false;
+			}
 			for (int i = 0; i < 8 && v_inputIsValid; i++)
 			{
 				if (i_stringInBinaryInput[i] - subOfIntTochar != 1 && i_stringInBinaryInput[i] - subOfIntTochar != 0)
+				{
 					v_inputIsValid = false;
+				}
 			}
 			return v_inputIsValid;
 
@@ -135,11 +145,15 @@ namespace B19_Ex01_1
 		public static bool CheckIfNumberIsTwoPower(int i_numberToCheck2Pow)
 		{
 			if (i_numberToCheck2Pow == 0)
+			{
 				return false;
+			}
 			while (i_numberToCheck2Pow != 1)
 			{
 				if (i_numberToCheck2Pow % 2 != 0)
+				{
 					return false;
+				}
 				i_numberToCheck2Pow /= 2;
 			}
 			return true;
