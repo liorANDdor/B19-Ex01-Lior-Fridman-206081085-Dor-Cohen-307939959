@@ -10,7 +10,7 @@ namespace B19_Ex01_2
 	{
 		public static void Main()
 		{
-			PrintPyramid(9, 0);
+			PrintPyramid(5, 0);
 		}
 		public static void PrintPyramid(int i_sizeOfPyramid, int i_numOfSpaces)
 		{

@@ -14,7 +14,7 @@ namespace B19_Ex01_1
 		}
 		public static void RunApplication()
 		{
-			int numOfInputs = 1;
+			int numOfInputs = 4;
 			int numOfBitInBinaryNum = 8;
 			Console.WriteLine("Please enter {0} number in binary mode: ",numOfInputs);
 			string[] binaryInputNumbers = GetArrayBinaryNumbers(numOfInputs);
