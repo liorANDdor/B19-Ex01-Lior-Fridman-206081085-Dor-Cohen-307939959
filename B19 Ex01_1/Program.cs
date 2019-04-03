@@ -143,19 +143,20 @@ namespace B19_Ex01_1
 		}
 		public static bool CheckIfNumberIsTwoPower(int i_numberToCheck2Pow)
 		{
+			bool v_numIsTwoPower = true;
 			if (i_numberToCheck2Pow == 0)
 			{
-				return false;
+				v_numIsTwoPower = false;
 			}
-			while (i_numberToCheck2Pow != 1)
+			while (i_numberToCheck2Pow != 1 && v_numIsTwoPower)
 			{
 				if (i_numberToCheck2Pow % 2 != 0)
 				{
-					return false;
+					v_numIsTwoPower = false;
 				}
 				i_numberToCheck2Pow /= 2;
 			}
-			return true;
+			return v_numIsTwoPower;
 		}
 		public static bool CheckIfTheNumberIsSeriesAscending(int i_numberToCheck)
 		{

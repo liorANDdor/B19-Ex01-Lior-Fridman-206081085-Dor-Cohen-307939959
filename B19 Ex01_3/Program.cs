@@ -21,11 +21,19 @@ namespace B19_Ex01_3
 			int  sizeOfPyramidToInt;
 			bool v_checkIfInputCorrect;
 			v_checkIfInputCorrect = int.TryParse(inputOfSizeOfPyramid,out sizeOfPyramidToInt);
-			while(!v_checkIfInputCorrect)
+			if (sizeOfPyramidToInt < 0)
+			{
+				v_checkIfInputCorrect = false;
+			}
+			while (!v_checkIfInputCorrect)
 			{
 				Console.Write("Your input is invalid, try again: ");
 				inputOfSizeOfPyramid = Console.ReadLine();
 				v_checkIfInputCorrect = int.TryParse(inputOfSizeOfPyramid, out sizeOfPyramidToInt);
+				if (sizeOfPyramidToInt < 0)
+				{
+					v_checkIfInputCorrect = false;
+				}
 			}
 			if (sizeOfPyramidToInt % 2 == 0)
 			{
