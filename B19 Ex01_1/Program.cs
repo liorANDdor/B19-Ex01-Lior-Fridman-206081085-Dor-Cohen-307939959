@@ -19,8 +19,8 @@ namespace B19_Ex01_1
 			Console.WriteLine("Please enter {0} number in binary mode: ",numOfInputs);
 			string[] binaryInputNumbers = GetArrayBinaryNumbers(numOfInputs);
 			int[] theNumbersInDecimal = ConverArrayOfBinaryNumberToDecimal(binaryInputNumbers, numOfInputs);
-			int numOfZeros = CountTheZerosInArrayOfBinary(binaryInputNumbers, numOfInputs);
-			int numOfOnes = numOfInputs*numOfBitInBinaryNum - numOfZeros;
+			float numOfZeros = CountTheZerosInArrayOfBinary(binaryInputNumbers, numOfInputs);
+			float numOfOnes = numOfInputs*numOfBitInBinaryNum - numOfZeros;
 			int numOfNumberThatAreExpOfTwo = CountNumOfNumberThatAreExpOfTwo(theNumbersInDecimal, numOfInputs);
 			float averageOfInputs = CalculateAverage(theNumbersInDecimal, numOfInputs);
 			int numOfNumberThatAreAscendingSeries = CountTheNumberIsSeriesAscending(theNumbersInDecimal, numOfInputs);
@@ -60,7 +60,7 @@ namespace B19_Ex01_1
 			}
 			return numOfNumberThatAreExpOfTwo;
 		}
-		public static int CountTheZerosInArrayOfBinary(string[] i_binaryInput, int i_numOfElements)
+		public static float CountTheZerosInArrayOfBinary(string[] i_binaryInput, int i_numOfElements)
 		{
 			int subOfIntTochar = 48;
 			int numOfZeros = 0;

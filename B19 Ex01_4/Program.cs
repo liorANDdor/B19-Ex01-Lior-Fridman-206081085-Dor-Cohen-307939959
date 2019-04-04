@@ -13,14 +13,15 @@
         public static void RunProgramEx4()
         {
             long stringAsNum;
-            System.Console.WriteLine("Hi. Please enter the required string, please remember only English letters and numbers are allowed");
+            System.Console.WriteLine("Hi. Please enter your string based on the required format");
+            System.Console.WriteLine("enter string below: ");
             string stringFromUser = System.Console.ReadLine();
             bool isNumber = long.TryParse(stringFromUser, out stringAsNum);
             bool isfWord = !stringFromUser.Any(char.IsDigit);
             int stringLength = stringFromUser.Length;
             while ((!isNumber && !isfWord) || stringLength != 12)
             {
-                System.Console.WriteLine("The string must be 12 letters long and should contain lettrs only, or digit only.");
+                System.Console.WriteLine("The string must be 12 letters long and should contain lettrs/digit only");
                 stringFromUser = System.Console.ReadLine();
                 isNumber = long.TryParse(stringFromUser, out stringAsNum);
                 isfWord = !stringFromUser.Any(char.IsDigit);

@@ -1,0 +1,8 @@
+C:\repo\B19-Ex01-Lior-Fridman-206081085-Dor-Cohen-307939959\B19 Ex01_3\bin\Debug\B19 Ex01_3.exe.config
+C:\repo\B19-Ex01-Lior-Fridman-206081085-Dor-Cohen-307939959\B19 Ex01_3\bin\Debug\B19 Ex01_3.exe
+C:\repo\B19-Ex01-Lior-Fridman-206081085-Dor-Cohen-307939959\B19 Ex01_3\bin\Debug\B19 Ex01_3.pdb
+C:\repo\B19-Ex01-Lior-Fridman-206081085-Dor-Cohen-307939959\B19 Ex01_3\bin\Debug\B19 Ex01_2.exe
+C:\repo\B19-Ex01-Lior-Fridman-206081085-Dor-Cohen-307939959\B19 Ex01_3\bin\Debug\B19 Ex01_2.pdb
+C:\repo\B19-Ex01-Lior-Fridman-206081085-Dor-Cohen-307939959\B19 Ex01_3\obj\Debug\B19 Ex01_3.csprojResolveAssemblyReference.cache
+C:\repo\B19-Ex01-Lior-Fridman-206081085-Dor-Cohen-307939959\B19 Ex01_3\obj\Debug\B19 Ex01_3.exe
+C:\repo\B19-Ex01-Lior-Fridman-206081085-Dor-Cohen-307939959\B19 Ex01_3\obj\Debug\B19 Ex01_3.pdb

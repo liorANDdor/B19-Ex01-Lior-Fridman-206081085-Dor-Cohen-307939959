@@ -1,29 +1,49 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace B19_Ex01_5
+﻿namespace B19_Ex01_5
 {
-	class Program
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    class Program
 	{
 		public static void  Main()
 		{
 			RunApplication();
 		}
+
 		public static void  RunApplication()
 		{
 			string stringOfEightDigs = GetInputFromUser();
 			char maxDigit = stringOfEightDigs.Max();
 			char minDigit = stringOfEightDigs.Min();
 			int numOfDigsThatDivededInThree = CheckNumOfDigAreDivideInThree(stringOfEightDigs);
-			Console.WriteLine("The min digit is: {0}", minDigit);
+            int numOfDigsBiggerThanRightMostDigit = CheckHowManyDigitBiggerThanRightMost(stringOfEightDigs);
+            Console.WriteLine("The min digit is: {0}", minDigit);
 			Console.WriteLine("The max digit is: {0}", maxDigit);
-			Console.WriteLine("The number of digits that divided in 3 is: {0}", numOfDigsThatDivededInThree);
+            Console.WriteLine("The number of digits that divided in 3 is: {0}", numOfDigsThatDivededInThree);
+            Console.WriteLine("The number of digits that are bigger than the rightmost digit: {0}", numOfDigsBiggerThanRightMostDigit);
+        }
 
-		}
-		public static int CheckNumOfDigAreDivideInThree(string i_stringOfEightDig)
+        public static int CheckHowManyDigitBiggerThanRightMost(string i_stringOfEightDig)
+        {
+            int counter = 0;
+            int currentDigit;
+            int rightMostDigit = i_stringOfEightDig[7] - 48;
+            for(int i = 0; i < 7; i++)
+            {
+                currentDigit = i_stringOfEightDig[i] - 48;
+                if(currentDigit > rightMostDigit)
+                {
+                    counter++;
+                }
+            }
+
+            return counter;
+        }
+
+        public static int CheckNumOfDigAreDivideInThree(string i_stringOfEightDig)
 		{
 			int counter = 0;
 			int currentDigit;
@@ -35,8 +55,10 @@ namespace B19_Ex01_5
 					counter++;
 				}
 			}
+
 			return counter;
 		}
+
 		public static string GetInputFromUser()
 		{
 			Console.WriteLine("Please enter a number with 8 digits: ");
@@ -48,6 +70,7 @@ namespace B19_Ex01_5
 				numberFromUser = Console.ReadLine();
 				v_inputIsValid = CheckIfInputIsValid(numberFromUser);
 			}
+
 			return numberFromUser;
 		}
 		public static bool CheckIfInputIsValid(string i_stringOfEightDig)
